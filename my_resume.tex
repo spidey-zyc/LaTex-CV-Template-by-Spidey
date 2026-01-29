@@ -1,0 +1,128 @@
+% !TEX TS-program = xelatex
+% !TEX encoding = UTF-8 Unicode
+% !Mode:: "TeX:UTF-8"
+
+\documentclass{resume}
+\usepackage{zh_CN-Adobefonts_external} % 确保您有配套的字体文件夹
+\usepackage{linespacing_fix} 
+\usepackage{cite}
+\usepackage{graphicx} % 必须引入，否则模板中的 \includegraphics 会报错
+
+\begin{document}
+
+\pagenumbering{gobble} % suppress displaying page number
+
+% ==============================================================================
+% 头部信息：照片、姓名、联系方式
+% ==============================================================================
+
+
+
+\name{张亦弛}
+
+% 联系方式：模板定义只接受两个参数（手机、邮箱）
+\contactInfo{(+86) XXX-XXXX-XXXX}{XXXXXXXXXX}
+
+% 其他信息：利用模板的 \otherInfo 放置专业和主页，后两个参数留空
+\otherInfo{人工智能(卓越人才试点班)}{https://spidey-zyc.github.io}{}{}
+
+% 照片：根据模板逻辑，这里直接调用，图片需放在 images/you.jpg
+% 参数 0.15 控制照片宽度占页面宽度的比例，可按需微调
+\yourphoto{0.13}
+
+% ==============================================================================
+% 教育背景
+% ==============================================================================
+\section{教育背景}
+\eduitem{上海交通大学}{计算机学院 · 人工智能(卓越班)}{\textbf{GPA}: 3.87/4.3 (前\textbf{30\%})}{2023.09 -- 至今}
+\begin{itemize}
+
+  \item \textbf{荣誉奖项}：上海交通大学本科生 C 等优秀奖学金 (2023-2024 学年)；2024年全国大学生数学建模竞赛上海赛区二等奖
+\end{itemize}
+
+
+
+% ==============================================================================
+% 项目经历
+% ==============================================================================
+\section{项目经历}
+\datedsubsectionWithRole{\textbf{RAG 智能助教系统}}{\textbf{项目负责人}}{2025.11 -- 2025.12}
+\begin{itemize}
+\item \textbf{项目目标}：构建课程专用RAG系统，通过精准检索外部知识，解决大模型回答中的事实性“幻觉”问题。
+\item \textbf{多模态索引}：利用 VLM 解析图表并与文本硬编码关联，构建统一向量库实现图文同步检索。图文关联召回率达 \textbf{85\%}。
+  \item \textbf{检索调优}：融合 BM25 与语义检索并引入 Rerank 精排。Top-3 结果相关性从 75\% 提升至 \textbf{92\%}，有效抑制生成幻觉。
+  \item \textbf{项目成果}：将非结构化课件转化为高精度知识库。经量化验证，该方案显著增强了上下文相关性与答疑准确度。
+
+\end{itemize}
+
+\datedsubsectionWithRole{\textbf{GAKG-Explorer: 地学文献智能挖掘系统}}{\textbf{核心开发者}}{2025.09 -- 2026.01}
+\begin{itemize}
+  \item \textbf{SIS-Rank 图挖掘算法}：针对地学搜索噪声大的痛点，自研 Semantic-Inverse-Specificity 排序算法。通过“特异性稀释”抑制通用词干扰，配合“能量回流”提升专业长尾实体权重。在12组典型多义词对比测试中，系统综合相关性平均得分达\textbf{6.91/10}，显著优于基线（\textbf{3.43/10}）与仅向量检索方案（\textbf{2.04/10}）。
+  \item \textbf{多智能体协作架构}：构建基于 Qwen 模型及多智能体（Planner/Searcher/Writer）的流水线。通过 Sentence-Transformers 向量检索与图谱排序混合增强，实现从模糊查询到结构化深度综述的全自动生成。
+  \item \textbf{工程落地}：使用 NetworkX 建模引文实体图谱，支持复杂地学概念（如“环流”、“页岩”）的精准语境消歧，有效打通了科研检索、阅读与综述分析的全流程。
+\end{itemize}
+
+\datedsubsectionWithRole{\textbf{深度强化学习算法研究与复现 (Atari/MuJoCo)}}{\textbf{独立开发者}}{2025.12 -- 2026.01}
+\begin{itemize}
+  \item \textbf{算法实现与对比}：在 Atari (Pong, Breakout) 与 MuJoCo (HalfCheetah, Ant) 环境下，复现并对比了 DQN, Double DQN (DDQN), PPO, TD3 等主流算法。
+  \item \textbf{性能优化}：针对 TD3 算法在连续控制任务中的表现进行调参优化（学习率、探索噪声等）。实验结果显示，优化后的 TD3 在 HalfCheetah 任务中平均回报突破 \textbf{8000+}，收敛速度与稳定性均优于 PPO。
+  \item \textbf{消融实验}：设计实验探究 Epsilon 衰减策略及 Batch Size 对 DDQN 收敛性的影响，在 Pong 环境中实现接近满分（20+）的稳定表现。
+\end{itemize}
+
+\datedsubsectionWithRole{\textbf{基于 GAN 的人脸图像生成与优化}}{\textbf{核心开发者}}{2024.03 -- 2024.06}
+\begin{itemize}
+  \item \textbf{模型复现与改进}：基于 CelebA 数据集复现 DCGAN，针对模式崩溃 (Mode Collapse) 问题，引入 \textbf{Replay Buffer (经验回放池)} 机制与 \textbf{Spectral Normalization (谱归一化)}，显著提升了长周期训练的稳定性，在长周期(\textbf{100+} epochs)下FID指标平稳在50、IS平稳在2.5左右。
+  \item \textbf{隐空间分析}：利用 PCA 主成分分析与 t-SNE 算法对 Latent Space 进行降维可视化，验证了模型对性别、姿态等高层语义特征的解耦能力。
+  \item \textbf{StyleGAN 对比研究}：复现 StyleGAN 模型并进行对比实验，评估 FID 与 IS 指标，验证了基于 Style 的生成架构在图像质量与多样性上的优势；整体而言，StyleGAN的FID优化了约\textbf{50\%}，IS提升了约\textbf{40\%}。
+\end{itemize}
+
+
+
+
+
+
+% ==============================================================================
+% 技术能力
+% ==============================================================================
+\section{技术能力}
+\begin{itemize}
+  \item \textbf{编程语言}: Python, C++, Shell
+  \item \textbf{AI与数据栈}: PyTorch, NumPy, Pandas, Matplotlib, WandB, NetworkX
+  \item \textbf{工具与文档}: LaTeX, Markdown, Git, Linux, Docker
+  \item \textbf{英语能力}: 六级 571 分，托福 104 分，具备流利的英语听说读写能力
+\end{itemize}
+
+% ==============================================================================
+% 竞赛获奖
+
+% 
+
+
+
+% 学生工作与社会实践
+% ==============================================================================
+\section{学生工作与社会实践}
+
+\datedsubsectionWithRole{\textbf{上海交通大学“荣昶储才计划” (第九期学员)}}{\textbf{骨干学员}}{2023.09 -- 至今}
+\role{行政组第四组、健康组、文化组成员}{选拔率 < 50人/年}
+\begin{itemize}
+  \item \textbf{核心培养}：入选交大优秀学生培养计划，通过“聚焦基层、认知行业、国际视野”三阶段社会实践，提升领导力。
+  \item \textbf{组织策划}：作为健康组与文化组成员，主导策划\textbf{4}次体育赛事与文化沙龙活动；参与“学子讲堂”与读书会，撰写\textbf{3}篇深度社会观察报告。
+\end{itemize}
+
+\datedsubsectionWithRole{\textbf{上海交通大学 健步足球协会}}{\textbf{会长}}{2025.09 -- 至今}
+\begin{itemize}
+  \item 统筹社团日常运营，对接校体育系场地资源，组织校内足球赛事每学期\textbf{18}次，提升社团校内影响力，招新\textbf{100}余人。
+\end{itemize}
+
+\datedsubsectionWithRole{\textbf{上海交通大学 魔方协会}}{\textbf{副会长}}{2023.12 -- 2024.09}
+\begin{itemize}
+  \item 负责魔方竞速赛事的流程设计与现场执行，成功开展2024高校魔方赛并获取活动赞助。
+\end{itemize}
+
+\datedsubsectionWithRole{\textbf{个人自媒体运营 “一池安易持”}}{\textbf{主理人}}{2023.09 -- 至今}
+\begin{itemize}
+  \item 运营个人公众号，累计粉丝 \textbf{2000+}。撰写并发布 AI 技术科普、大学生活经验及深度思考类文章，最高阅读量\textbf{50000+}。
+\end{itemize}
+
+\end{document}
