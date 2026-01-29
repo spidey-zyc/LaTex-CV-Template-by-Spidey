@@ -109,4 +109,3 @@
 
 Created based on open-source templates, customized for SJTU AI Class.
 
-```
