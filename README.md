@@ -92,7 +92,7 @@
 
 ## ❓ 常见问题 (FAQ)
 
-**Q1: 编译报错 `Package fontspec Error: The font ... cannot be found**`
+**Q1: 编译报错** `Package fontspec Error: The font ... cannot be found`
 
 * **原因**：缺少字体文件或路径不对。
 * **解决**：请确保项目根目录下有 `fonts` 文件夹，且内部结构与 `resume.cls` 中 `\setmainfont` 定义的路径一致。或者在 `main.tex` 中注释掉 `zh_CN-Adobefonts_external` 并启用 `zh_CN-Adobefonts_internal` 使用系统字体。
